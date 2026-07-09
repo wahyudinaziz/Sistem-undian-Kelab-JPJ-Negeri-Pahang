@@ -4,7 +4,7 @@ Sistem undian atas talian rasmi untuk **Pemilihan Ahli Jawatankuasa Kelab Sukan 
 
 > Projek oleh **[wahyudin.dev](https://wahyudin.dev/)** untuk Kelab Sukan & Kebajikan JPJ Negeri Pahang
 
-> **URL Produksi:** `https://ksk.iactims.my/undi2026`
+
 
 ![PHP](https://img.shields.io/badge/PHP-PDO-777BB4?logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-latin1-4479A1?logo=mysql&logoColor=white)
@@ -153,7 +153,7 @@ Pastikan fail tersembunyi (`.htaccess`) **turut dimuat naik** — hidupkan *"sho
 ### 6. Log masuk pentadbir
 Akses `.../admin/`, log masuk, kemudian **tetapkan tarikh mula & tamat** undian di halaman Dashboard.
 
-> **Kelayakan pentadbir lalai:** `kskjpjpahang` / `kskpahang2026`
+> **Kelayakan pentadbir lalai:** `adminundi` / `@dminKSK!`
 > Disarankan menukar kata laluan selepas log masuk kali pertama.
 
 ---
@@ -163,7 +163,7 @@ Akses `.../admin/`, log masuk, kemudian **tetapkan tarikh mula & tamat** undian 
 Buka `config/db.php` dan kemas kini pemalar (constant) berikut mengikut persekitaran pelayan anda:
 
 ```php
-const DB_HOST = 'localhost';
+const DB_HOST = '127.0.0.1';
 const DB_NAME = 'DATABASE_NAME'; // TODO: ganti dengan nama DB sebenar
 const DB_USER = 'DATABASE_USER'; // TODO: ganti dengan user DB sebenar
 const DB_PASS = 'DATABASE_PASS'; // TODO: ganti dengan kata laluan DB sebenar
@@ -187,7 +187,7 @@ const DB_CHARSET = 'latin1';
 ### Pengundi
 
 ```
-1. Buka https://ksk.iactims.my/undi2026
+1. Buka https://your-url/undi2026
    └─ Countdown memaparkan baki masa undian
 
 2. Masukkan No. MyKad (12 digit)
