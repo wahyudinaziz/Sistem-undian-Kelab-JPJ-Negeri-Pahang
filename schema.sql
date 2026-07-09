@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `ksk_undi_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 INSERT IGNORE INTO `ksk_undi_admin` (`username`,`password`) VALUES
-('kskjpjpahang', '$2y$10$bOyCpiz1aRXvrU0jHlnu7ehU5wymZh.E0QfKM/upv3j8dGvZPJT.S');
+('adminundi', '$2a$12$chpm7ykO8.1y6KeeHI/JPuDZAt2uFcgGK8o3ZD1GD1ichoxzohggq');
 
 COMMIT;
 
