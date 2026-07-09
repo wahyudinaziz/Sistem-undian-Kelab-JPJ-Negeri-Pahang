@@ -1,0 +1,83 @@
+# ============================================================
+# .htaccess — Sistem Undian KSK JPJ Negeri Pahang 2026
+# Untuk Apache / LiteSpeed (cPanel). Letak di root projek /undi2026.
+# ============================================================
+
+# --- Halaman lalai ---
+DirectoryIndex index.php
+
+# --- Matikan penyenaraian direktori ---
+Options -Indexes
+
+# --- Set charset lalai ---
+AddDefaultCharset UTF-8
+
+# ============================================================
+# 1) Paksa HTTPS (SSL sedia ada pada subdomain)
+# ============================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ============================================================
+# 2) Header keselamatan (untuk aset statik; PHP set sendiri untuk .php)
+#    'setifempty' elak pertindihan dengan header yang PHP sudah hantar.
+# ============================================================
+<IfModule mod_headers.c>
+  Header setifempty X-Content-Type-Options "nosniff"
+  Header setifempty X-Frame-Options "DENY"
+  Header setifempty Referrer-Policy "strict-origin-when-cross-origin"
+  Header setifempty Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
+  # Jangan bocorkan maklumat pelayan
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+</IfModule>
+
+# ============================================================
+# 3) Sekat akses terus ke fail sensitif
+#    Termasuk 'error_log' (tiada extension) yang PHP tulis ke folder skrip.
+# ============================================================
+<FilesMatch "(^error_log$|^php_errorlog$|\.(sql|sh|md|log|ini|lock|bak|old|env)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Sekat semua fail tersembunyi (kecuali .well-known jika perlu)
+<FilesMatch "^\.(?!well-known)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ============================================================
+# 4) Cache aset statik (prestasi)
+# ============================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css              "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/javascript        "access plus 7 days"
+  ExpiresByType image/png              "access plus 30 days"
+  ExpiresByType image/jpeg             "access plus 30 days"
+  ExpiresByType image/svg+xml          "access plus 30 days"
+  ExpiresByType image/x-icon           "access plus 30 days"
+</IfModule>
+
+# ============================================================
+# 5) Halaman ralat mesra (opsyenal — buat fail jika mahu)
+# ============================================================
+# ErrorDocument 403 /undi2026/403.php
+# ErrorDocument 404 /undi2026/404.php

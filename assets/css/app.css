@@ -1,0 +1,297 @@
+/* ============================================================
+   app.css — Tema rasmi Sistem Undian KSK JPJ Negeri Pahang 2026
+   Palet diambil dari logo KSK: steel blue + emas atas latar bersih.
+   Mobile-first. Serasi semua pelayar & OS.
+   ============================================================ */
+
+:root {
+  /* Warna teras (dari logo) */
+  --navy:        #16223d;
+  --steel:       #3a548f;
+  --steel-2:     #4860a8;
+  --sky:         #60a8d8;
+  --sky-soft:    #90a8d8;
+  --gold:        #d8a818;
+  --gold-bright: #f0c53f;
+  --gold-deep:   #a97d0a;
+
+  /* Neutral */
+  --ink:    #16223d;
+  --muted:  #5a6b86;
+  --line:   #dfe6f0;
+  --paper:  #eef2f8;
+  --card:   #ffffff;
+  --ok:     #1f9d68;
+  --danger: #d64545;
+
+  --radius:   16px;
+  --radius-sm:10px;
+  --shadow:   0 10px 30px -12px rgba(22,34,61,.28);
+  --shadow-lg:0 24px 60px -20px rgba(22,34,61,.40);
+  --ring:     0 0 0 4px rgba(96,168,216,.28);
+
+  --ff-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-head: "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--ff-body);
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 100% -10%, rgba(96,168,216,.16), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(72,96,168,.14), transparent 55%),
+    var(--paper);
+  min-height: 100vh;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Watermark gear halus di latar */
+body::before {
+  content: "";
+  position: fixed;
+  right: -140px; top: -120px;
+  width: 460px; height: 460px;
+  background: url("../img/logo.png") no-repeat center/contain;
+  opacity: .05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Layout shell ---------- */
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+.wrap--wide { max-width: 820px; }
+
+/* ---------- Header jenama ---------- */
+.brand {
+  text-align: center;
+  margin: 8px 0 22px;
+}
+.brand__logo {
+  width: 96px; height: 96px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(22,34,61,.22));
+}
+.brand__eyebrow {
+  margin: 12px 0 2px;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+.brand__title {
+  margin: 0;
+  font-family: var(--ff-head);
+  font-weight: 800;
+  font-size: 1.34rem;
+  line-height: 1.25;
+  color: var(--navy);
+  letter-spacing: -.01em;
+}
+.brand__sub {
+  margin: 6px 0 0;
+  font-size: .92rem;
+  color: var(--muted);
+}
+
+/* ---------- Kad ---------- */
+.card-x {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+.card-x + .card-x { margin-top: 16px; }
+
+/* ---------- Countdown (signature element) ---------- */
+.count {
+  position: relative;
+  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: var(--radius);
+  color: #fff;
+  background:
+    linear-gradient(135deg, var(--steel-2) 0%, var(--navy) 100%);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.count::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: url("../img/logo.png") no-repeat 120% 50%/180px;
+  opacity: .08;
+}
+.count__label {
+  position: relative;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.count__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.count__cell {
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--radius-sm);
+  padding: 12px 4px;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+.count__num {
+  font-family: var(--ff-head);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.count__unit {
+  display: block;
+  margin-top: 6px;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--sky-soft);
+}
+.count--closed {
+  background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+}
+.count__closed-msg {
+  position: relative;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 6px 0;
+}
+
+/* ---------- Borang / input ---------- */
+.field { margin-bottom: 16px; }
+.field__label {
+  display: block;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+.field__hint { font-size: .78rem; color: var(--muted); margin-top: 6px; }
+
+.input-x {
+  width: 100%;
+  font-size: 1.15rem;
+  letter-spacing: .14em;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 15px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fbfcfe;
+  color: var(--ink);
+  transition: border-color .15s, box-shadow .15s;
+}
+.input-x:focus {
+  outline: none;
+  border-color: var(--sky);
+  box-shadow: var(--ring);
+  background: #fff;
+}
+.input-x::placeholder { letter-spacing: .1em; color: #aab6c9; }
+
+/* ---------- Butang ---------- */
+.btn-x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ff-head);
+  font-weight: 700;
+  font-size: 1.02rem;
+  padding: 15px 20px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  background: linear-gradient(135deg, var(--steel-2), var(--steel));
+  box-shadow: 0 10px 22px -10px rgba(58,84,143,.7);
+  transition: transform .12s, box-shadow .12s, filter .12s;
+}
+.btn-x:hover { filter: brightness(1.05); }
+.btn-x:active { transform: translateY(1px); }
+.btn-x:disabled { opacity: .55; cursor: not-allowed; filter: grayscale(.3); }
+.btn-x--gold {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  color: var(--navy);
+  box-shadow: 0 10px 22px -10px rgba(216,168,24,.7);
+}
+.btn-x__spin {
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Nota / footer ---------- */
+.note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(96,168,216,.10);
+  border: 1px solid rgba(96,168,216,.24);
+  font-size: .82rem;
+  color: var(--steel);
+}
+.note svg { flex: none; margin-top: 1px; }
+.foot {
+  text-align: center;
+  margin-top: 26px;
+  font-size: .76rem;
+  color: var(--muted);
+}
+.foot b { color: var(--steel); }
+
+/* ---------- Animasi masuk ---------- */
+.rise { animation: rise .5s cubic-bezier(.2,.7,.3,1) both; }
+.rise-2 { animation-delay: .08s; }
+.rise-3 { animation-delay: .16s; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Skrin kecil ---------- */
+@media (max-width: 360px) {
+  .brand__title { font-size: 1.18rem; }
+  .count__num { font-size: 1.4rem; }
+  .count__cell { padding: 10px 2px; }
+}
