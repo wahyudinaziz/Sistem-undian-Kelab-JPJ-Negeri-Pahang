@@ -2,6 +2,8 @@
 
 Sistem undian atas talian rasmi untuk **Pemilihan Ahli Jawatankuasa Kelab Sukan & Kebajikan (KSK) JPJ Negeri Pahang**. Dibangunkan dengan **PHP (PDO) + MySQL**, antara muka **mobile-first**, dan reka bentuk mementingkan **keselamatan** serta **kerahsiaan undi**.
 
+> Projek oleh **[wahyudin.dev](https://wahyudin.dev/)** untuk Kelab Sukan & Kebajikan JPJ Negeri Pahang
+
 > **URL Produksi:** `https://ksk.iactims.my/undi2026`
 
 ![PHP](https://img.shields.io/badge/PHP-PDO-777BB4?logo=php&logoColor=white)
@@ -256,4 +258,8 @@ Dengan syarat berikut:
 <p align="center">
   <strong>Kelab Sukan &amp; Kebajikan JPJ Negeri Pahang</strong><br>
   Sistem Undian Atas Talian &middot; 2026
+</p>
+
+<p align="center">
+  Projek oleh <a href="https://wahyudin.dev/"><strong>wahyudin.dev</strong></a> untuk Kelab Sukan &amp; Kebajikan JPJ Negeri Pahang
 </p>
