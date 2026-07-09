@@ -2,7 +2,8 @@
 -- schema.sql — Skema Pangkalan Data Penuh
 -- Sistem Undian Atas Talian KSK JPJ Negeri Pahang 2026
 -- ----------------------------------------------------------------------------
--- Repo        : (projek GitHub anda)
+-- Repo        : Sistem Undian Kelab JPJ Pahang 2026
+-- Author      : Wahyudin Aziz <wahyudinaziz.dev@gmail.com>
 -- Database    : iactimsm_staff
 -- Charset     : latin1 / latin1_swedish_ci (selaras keseluruhan sistem)
 -- ----------------------------------------------------------------------------
@@ -128,11 +129,7 @@ CREATE TABLE IF NOT EXISTS `ksk_undi_voter_log` (
   KEY `idx_cawangan` (`cawangan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- ----------------------------------------------------------------------------
--- 6. ksk_undi_admin — akaun pentadbir tunggal
---    Default: kskjpjpahang / kskpahang2026  (bcrypt)
---    DISARANKAN tukar kata laluan selepas log masuk kali pertama.
--- ----------------------------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `ksk_undi_admin` (
   `id`         int(11)      NOT NULL AUTO_INCREMENT,
   `username`   varchar(50)  NOT NULL,
