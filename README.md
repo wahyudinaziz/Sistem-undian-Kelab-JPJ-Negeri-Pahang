@@ -1,4 +1,4 @@
-# 🗳️ Sistem Undian Atas Talian — KSK JPJ Negeri Pahang 2026
+# Sistem Undian Atas Talian — KSK JPJ Negeri Pahang 2026
 
 Sistem undian atas talian rasmi untuk **Pemilihan Ahli Jawatankuasa Kelab Sukan & Kebajikan (KSK) JPJ Negeri Pahang**. Dibangunkan dengan **PHP (PDO) + MySQL**, antara muka **mobile-first**, dan reka bentuk mementingkan **keselamatan** serta **kerahsiaan undi**.
 
@@ -13,7 +13,7 @@ Sistem undian atas talian rasmi untuk **Pemilihan Ahli Jawatankuasa Kelab Sukan 
 
 ---
 
-## 📋 Kandungan
+## Kandungan
 
 - [Kegunaan](#-kegunaan)
 - [Ciri Utama](#-ciri-utama)
@@ -28,7 +28,7 @@ Sistem undian atas talian rasmi untuk **Pemilihan Ahli Jawatankuasa Kelab Sukan 
 
 ---
 
-## 🎯 Kegunaan
+## Kegunaan
 
 Sistem ini membolehkan kakitangan JPJ Negeri Pahang mengundi calon bagi **10 jawatan** dalam dua kategori:
 
@@ -45,21 +45,21 @@ Sistem ini membolehkan kakitangan JPJ Negeri Pahang mengundi calon bagi **10 jaw
 
 ---
 
-## ✨ Ciri Utama
+## Ciri Utama
 
-- 📱 **Mobile-first** — serasi semua pelayar & OS (Android, iOS, desktop)
-- ⏱️ **Countdown masa nyata** dengan auto-lock apabila tempoh tamat
-- 🔍 **Select2** untuk pemilihan calon yang mudah dicari
-- 🚫 **Cross-disable** — calon yang telah dipilih di-disable di dropdown lain
-- 🔐 **Panel pentadbir** — tetapan tempoh, kunci manual, zahirkan keputusan
-- 📊 **Keputusan** — 5 tertinggi setiap jawatan; papar semua nama jika seri
-- 📥 **Export Excel** (.xlsx) berbilang tab dengan statistik & pecahan cawangan
-- 🛡️ **Header keselamatan** penuh (CSP, HSTS, CSRF, XSS protection)
-- 📦 **Semua pustaka self-host** — tiada pergantungan CDN luar
+- **Mobile-first** — serasi semua pelayar & OS (Android, iOS, desktop)
+- **Countdown masa nyata** dengan auto-lock apabila tempoh tamat
+- **Select2** untuk pemilihan calon yang mudah dicari
+- **Cross-disable** — calon yang telah dipilih di-disable di dropdown lain
+- **Panel pentadbir** — tetapan tempoh, kunci manual, zahirkan keputusan
+- **Keputusan** — 5 tertinggi setiap jawatan; papar semua nama jika seri
+- **Export Excel** (.xlsx) berbilang tab dengan statistik & pecahan cawangan
+- **Header keselamatan** penuh (CSP, HSTS, CSRF, XSS protection)
+- **Semua pustaka self-host** — tiada pergantungan CDN luar
 
 ---
 
-## 🧰 Susunan Teknologi
+## Susunan Teknologi
 
 | Lapisan | Teknologi |
 |---------|-----------|
@@ -70,7 +70,7 @@ Sistem ini membolehkan kakitangan JPJ Negeri Pahang mengundi calon bagi **10 jaw
 
 ---
 
-## 📁 Struktur Projek
+## Struktur Projek
 
 ```
 undi2026/
@@ -114,7 +114,7 @@ undi2026/
 
 ---
 
-## ⚙️ Prasyarat
+## Prasyarat
 
 - PHP **7.4** atau lebih tinggi (dengan sambungan `pdo_mysql`, `zip`, `mbstring`)
 - MySQL **5.7+** atau MariaDB **10.x**
@@ -123,7 +123,7 @@ undi2026/
 
 ---
 
-## 🚀 Pemasangan
+## Pemasangan
 
 ### 1. Klon repositori
 ```bash
@@ -158,7 +158,7 @@ Akses `.../admin/`, log masuk, kemudian **tetapkan tarikh mula & tamat** undian 
 
 ---
 
-## 🔧 Konfigurasi Pangkalan Data
+## Konfigurasi Pangkalan Data
 
 Buka `config/db.php` dan kemas kini pemalar (constant) berikut mengikut persekitaran pelayan anda:
 
@@ -178,13 +178,13 @@ const DB_CHARSET = 'latin1';
 | `DB_PASS` | Kata laluan bagi pengguna MySQL di atas. |
 | `DB_CHARSET` | **Kekalkan `latin1`.** Ia diselaraskan dengan set aksara table `staff` supaya operasi JOIN tidak menghadapi isu *collation mismatch*. |
 
-> ⚠️ **Penting:** `config/db.php` mengandungi kredensial pangkalan data. Fail ini dilindungi daripada akses web oleh `config/.htaccess`, tetapi **pastikan anda tidak mendedahkan kredensial sebenar** apabila berkongsi kod secara awam.
+> **Penting:** `config/db.php` mengandungi kredensial pangkalan data. Fail ini dilindungi daripada akses web oleh `config/.htaccess`, tetapi **pastikan anda tidak mendedahkan kredensial sebenar** apabila berkongsi kod secara awam.
 
 ---
 
-## 🔄 Flow Kegunaan
+## Flow Kegunaan
 
-### 👤 Pengundi
+### Pengundi
 
 ```
 1. Buka https://ksk.iactims.my/undi2026
@@ -207,7 +207,7 @@ const DB_CHARSET = 'latin1';
    └─ Tidak boleh mengundi lagi
 ```
 
-### 🛠️ Pentadbir
+### Pentadbir
 
 ```
 1. Log masuk di .../admin/
@@ -227,7 +227,7 @@ const DB_CHARSET = 'latin1';
 
 ---
 
-## 🛡️ Keselamatan & Kerahsiaan
+## Keselamatan & Kerahsiaan
 
 - **Kerahsiaan undi:** Table `ksk_undi_votes` (pilihan sebenar) **berasingan sepenuhnya** daripada `ksk_undi_voter_log` (identiti pengundi) — tiada foreign key atau lajur perantaraan yang menghubungkan kedua-duanya. Susunan rekod undi juga diacak (`shuffle`) untuk menghapuskan sebarang korelasi tertib.
 - **Sekali sahaja:** Dikuatkuasakan oleh `UNIQUE(mykad)` pada `voter_log` (turut mengunci *race-condition*).
@@ -239,7 +239,7 @@ const DB_CHARSET = 'latin1';
 
 ---
 
-## 📄 Lesen
+## Lesen
 
 Projek ini dilesenkan di bawah **[Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)**.
 
